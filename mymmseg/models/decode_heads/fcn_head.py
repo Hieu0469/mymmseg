@@ -13,7 +13,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from semseg.utils.registry import DECODE_HEADS
+from mymmseg.utils.registry import DECODE_HEADS
 
 from .base_decode_head import BaseDecodeHead
 

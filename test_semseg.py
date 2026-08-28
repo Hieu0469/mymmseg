@@ -1,16 +1,16 @@
-"""Smoke test — verify the semseg library wires together correctly."""
+"""Smoke test — verify the mymmseg library wires together correctly."""
 
 import sys
 sys.path.insert(0, "/home/claude")
 
 import torch
-import semseg
-from semseg.models.segmentors import EncoderDecoder
+import mymmseg
+from mymmseg.models.segmentors import EncoderDecoder
 
-print(f"semseg version: {semseg.__version__}")
-print(f"Registries — BACKBONES: {semseg.BACKBONES}")
-print(f"Registries — DECODE_HEADS: {semseg.DECODE_HEADS}")
-print(f"Registries — SEGMENTORS: {semseg.SEGMENTORS}")
+print(f"mymmseg version: {mymmseg.__version__}")
+print(f"Registries — BACKBONES: {mymmseg.BACKBONES}")
+print(f"Registries — DECODE_HEADS: {mymmseg.DECODE_HEADS}")
+print(f"Registries — SEGMENTORS: {mymmseg.SEGMENTORS}")
 print()
 
 # ── Build from config dicts (MMSeg-style) ──────────────────────────────────

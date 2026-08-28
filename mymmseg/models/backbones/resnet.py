@@ -19,7 +19,7 @@ from torchvision.models import (
     resnet101,
 )
 
-from semseg.utils.registry import BACKBONES
+from mymmseg.utils.registry import BACKBONES
 
 from .base_backbone import BaseBackbone
 
