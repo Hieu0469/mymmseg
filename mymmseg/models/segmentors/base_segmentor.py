@@ -78,23 +78,5 @@ class BaseSegmentor(nn.Module, ABC):
 
     # ── Unified forward ───────────────────────────────────────────────────────
 
-    def forward(
-        self,
-        img: torch.Tensor,
-        gt_semantic_seg: Optional[torch.Tensor] = None,
-    ) -> Union[Dict[str, torch.Tensor], torch.Tensor]:
-        """
-        Training:   forward(img, gt_semantic_seg) → loss dict
-        Inference:  forward(img)                  → logit map
-        """
-        if self.training:
-            if gt_semantic_seg is None:
-                raise ValueError("gt_semantic_seg is required during training.")
-            return self.forward_train(img, gt_semantic_seg)
-        else:
-            return self.forward_test(img)
-
-    def predict(self, img: torch.Tensor) -> torch.Tensor:
-        """Convenience: argmax of forward_test output → class map (B, H, W)."""
-        logits = self.forward_test(img)
-        return logits.argmax(dim=1)
+    def forward(self, img: torch.Tensor) -> torch.Tensor:
+        return self.encode_decode(img, img_size=(img.shape[2], img.shape[3]))
