@@ -17,7 +17,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-from mymmseg.utils.registry import BACKBONES, DECODE_HEADS, SEGMENTORS
+from ...utils.registry import BACKBONES, DECODE_HEADS, SEGMENTORS
 
 from .base_segmentor import BaseSegmentor
 
@@ -37,7 +37,7 @@ class EncoderDecoder(BaseSegmentor):
 
     Example::
 
-        from mymmseg.models.segmentors import EncoderDecoder
+        from .encoder_decoder import EncoderDecoder
 
         model = EncoderDecoder(
             backbone=dict(
