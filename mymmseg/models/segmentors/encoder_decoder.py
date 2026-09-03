@@ -39,7 +39,7 @@ class EncoderDecoder(BaseSegmentor):
         test_cfg: Optional[Dict] = None,
         init_cfg: Optional[Dict] = None,
     ):
-        super().__init__(init_cfg)
+        super().__init__()
         self.backbone = BACKBONES.build(backbone)
         self.decode_head = DECODE_HEADS.build(decode_head)
 
