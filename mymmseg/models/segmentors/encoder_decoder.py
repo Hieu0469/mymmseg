@@ -89,6 +89,23 @@ class EncoderDecoder(BaseSegmentor):
 
         return losses
 
+    def forward_both(
+        self,
+        img: torch.Tensor,
+        img_size: Optional[Tuple[int, int]] = None,
+    ):
+        """Trả về cả main logits và aux logits.
+        
+        Returns:
+            main_out: (B, num_classes, H, W)
+            aux_out:  (B, num_classes, H, W) hoặc None nếu không có aux head
+        """
+        img_size = img_size or (img.shape[2], img.shape[3])
+        feats    = self.extract_feat(img)
+        main_out = self.decode_head(feats, img_size=img_size)
+        aux_out  = self.auxiliary_head(feats, img_size=img_size) \
+                if self.with_auxiliary_head else None
+        return main_out, aux_out
     # ── Built-in fallback loss (replace with LOSSES.build() later) ───────────
 
     @staticmethod
